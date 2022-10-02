@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>user</title>
+    <style>
+        .slide-out{
+        transform: translateX(40px);
+        opacity: 0;
+        }
+        .slide-in{
+            transform: translateX(-40px);
+        }
+        .h-out{
+            height: 1rem;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="bg-slate-50">
+    <div class="container mx-auto pt-10">
+        <!--lobby-->
+        <div id="lobby" class=" hidden max-w-4xl mx-auto">
+            <h1 class="font-bold text-2xl text-center">Untuk User</h1>
+            <hr class="my-8" />
+
+            <!-- daftar lobby -->
+            <h1 class="font-semibold text-xl text-center">daftar user</h1>
+            <div class="player-container py-2 flex flex-col gap-2"> <!--container untuk player-->
+            <!-- disini tempat playernya -->
+            </div>
+        </div>
+
+        <!--signup-->
+        <div id="signup" class="hidden w-[500px] mx-auto absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 p-2">
+            <div class="bg-sky-400 p-3 rounded mb-2 bg-[url('asset/gajah-puteh.svg')] bg-[length:140px] bg-[position-x:10px] bg-no-repeat">
+                <h3 class="text-center text-xl font-semibold text-white ">Quiz banyuwangi</h3>
+            </div>
+            <div class=" bg-white border border-sky-400 shadow rounded-lg p-2">
+                <h1 class="font-semibold text-base text-center p-2">Daftar terlebih tahulu</h1>
+                <hr />
+                <div class="p-2">
+                    <div class="mb-3">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900 dark:text-gray-300">Name : </label>
+                        <input type="text" id="user-name-input" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                    </div>
+                    <button type="submit" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 ">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <!--in game-->
+        <div id="game-start" class="max-w-3xl mx-auto absolute top-1/2 left-1/2 -translate-y-1/2 -translate-x-1/2 ">
+            <div id="current-player-bar">
+                
+            </div>
+            <div class="wrapper border bg-gray-100 border-sky-500 rounded-lg p-2">
+                <div id="question-container" class="bg-white p-2 rounded mb-6">Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam, molestiae? </div>
+                <div id="answer-option">
+                    <button type="button" class="question-option py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 transition">False X</button>
+                    <button type="button" class="question-option py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 transition">true v</button>
+                    <button type="button" class="question-option py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 transition">False X</button>
+                    <button type="button" class="question-option py-2 px-3 text-xs font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 transition">False X</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <script src="components.js"></script>
+    <script src="user.js"></script> -->
+    <script src="user-oop.js"></script>
+</body>
+</html>

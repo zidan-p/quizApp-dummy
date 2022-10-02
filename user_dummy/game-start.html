@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <title>ini test halaman admin</title>
+</head>
+<body>
+  <div class="h-1 bg-gradient-to-r from-sky-500"></div>
+  <div class="min-h-screen bg-gray-50 p-4">
+    <div class="container pt-6 mx-auto lg:px-20">
+
+      <div class="header"><!-- untuk header -->
+        <h1 class="font-semibold text-3xl text-center">Game start</h1>
+        <div class="flex justify-between mt-8 bg-white rounded shadow-md p-2">
+            <div class="flex gap-2 justify-around">
+                <div class="nomor basis-1/4 min-w-[15rem] p-2 bg-sky-500 rounded">
+                    <p class="font-medium bg-sky-200 rounded p-1" >No.</p>
+                    <h3 class="text-4xl" >1</h3>
+                </div>
+                <div class="jumlah-pemain basis-1/4 min-w-[15rem] p-2 bg-amber-500 rounded">
+                    <p class="font-medium bg-amber-200 rounded p-1" >Jumlah Pemain</p>
+                    <h3 class="text-4xl" >12</h3>
+                </div>
+                <div class="jumlah-soal basis-1/4 min-w-[15rem] p-2 bg-green-500 rounded">
+                    <p class="font-medium bg-green-200 rounded p-1" >Jumlah Soal</p>
+                    <h3 class="text-4xl" >12</h3>
+                </div>
+            </div>
+            <div class="inline-flex">
+                <h1 class="text-7xl">10 <span class="text-2xl"></span></h1>
+                <h1 class="self-end" >
+                    <svg class="w-8"  xmlns="http://www.w3.org/2000/svg" fill="black" class="bi bi-hourglass" viewBox="0 0 16 16">
+                        <path d="M2 1.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-1v1a4.5 4.5 0 0 1-2.557 4.06c-.29.139-.443.377-.443.59v.7c0 .213.154.451.443.59A4.5 4.5 0 0 1 12.5 13v1h1a.5.5 0 0 1 0 1h-11a.5.5 0 1 1 0-1h1v-1a4.5 4.5 0 0 1 2.557-4.06c.29-.139.443-.377.443-.59v-.7c0-.213-.154-.451-.443-.59A4.5 4.5 0 0 1 3.5 3V2h-1a.5.5 0 0 1-.5-.5zm2.5.5v1a3.5 3.5 0 0 0 1.989 3.158c.533.256 1.011.791 1.011 1.491v.702c0 .7-.478 1.235-1.011 1.491A3.5 3.5 0 0 0 4.5 13v1h7v-1a3.5 3.5 0 0 0-1.989-3.158C8.978 9.586 8.5 9.052 8.5 8.351v-.702c0-.7.478-1.235 1.011-1.491A3.5 3.5 0 0 0 11.5 3V2h-7z"/>
+                    </svg>
+                </h1>
+            </div>
+        </div>
+      </div>
+
+      <div class="question-bar w-full h-1 mt-2 bg-sky-500"></div>
+
+      <!-- untuk content -->
+      <div class="content bg-white mt-3 rounded p-2 shadow">
+        <h3 class="font-normal text-lg mb-2">Daftar Pemain</h3>
+        <hr />
+        <!--<div class="player-container py-2 flex flex-col gap-2 w-7/12"> <!--container untuk player-->
+        <div class="player-container py-2 grid gap-2">
+          <div class="w-full flex border rounded py-2 px-2 justify-between transition-all"
+            style="background-image: linear-gradient(130deg, white 80%,#0ea5e9,#0284c7,#0057a3)"
+          > <!--player dan question bar-->
+              <div class="inline-flex gap-2 content-center items-center"> 
+                <div class="p-2 h-full rounded-full bg-slate-500"><!--icon-->
+                  <svg class="h-full w-5 stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class=""> 
+                  <p class="font-bold text-sm">Zidan Putra Rahman</p>
+                  <div class="inline-flex gap-8">
+                    <p class="font-light text-sm">#1121wq</p> <!--id pemain-->
+                    <p class="font-light text-sm"> <!--waktu-->
+                      <svg class="inline w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      12.00 AM
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="score self-center"> <!--curretn score-->
+                <h3 class="text-white text-4xl">100</h3>
+              </div>
+          </div>
+          <div class="w-full flex border rounded py-2 px-2 justify-between transition-all"
+            style="background-image: linear-gradient(130deg, white 80%,#0ea5e9,#0284c7,#0057a3)"
+          > <!--player dan question bar-->
+              <div class="inline-flex gap-2 content-center items-center"> 
+                <div class="p-2 h-full rounded-full bg-slate-500"><!--icon-->
+                  <svg class="h-full w-5 stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class=""> 
+                  <p class="font-bold text-sm">Zidan Putra Rahman</p>
+                  <div class="inline-flex gap-8">
+                    <p class="font-light text-sm">#1121wq</p> <!--id pemain-->
+                    <p class="font-light text-sm"> <!--waktu-->
+                      <svg class="inline w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      12.00 AM
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="score self-center"> <!--curretn score-->
+                <h3 class="text-white text-4xl">100</h3>
+              </div>
+          </div>
+          <div class="w-full flex border rounded py-2 px-2 justify-between transition-all"
+            style="background-image: linear-gradient(130deg, white 80%,#0ea5e9,#0284c7,#0057a3)"
+          > <!--player dan question bar-->
+              <div class="inline-flex gap-2 content-center items-center"> 
+                <div class="p-2 h-full rounded-full bg-slate-500"><!--icon-->
+                  <svg class="h-full w-5 stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class=""> 
+                  <p class="font-bold text-sm">Zidan Putra Rahman</p>
+                  <div class="inline-flex gap-8">
+                    <p class="font-light text-sm">#1121wq</p> <!--id pemain-->
+                    <p class="font-light text-sm"> <!--waktu-->
+                      <svg class="inline w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      12.00 AM
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="score self-center"> <!--curretn score-->
+                <h3 class="text-white text-4xl">100</h3>
+              </div>
+          </div>
+          <div class="w-full flex border rounded py-2 px-2 justify-between transition-all"
+            style="background-image: linear-gradient(130deg, white 80%,#0ea5e9,#0284c7,#0057a3)"
+          > <!--player dan question bar-->
+              <div class="inline-flex gap-2 content-center items-center"> 
+                <div class="p-2 h-full rounded-full bg-slate-500"><!--icon-->
+                  <svg class="h-full w-5 stroke-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                    <circle cx="12" cy="7" r="4"></circle>
+                  </svg>
+                </div>
+                <div class=""> 
+                  <p class="font-bold text-sm">Zidan Putra Rahman</p>
+                  <div class="inline-flex gap-8">
+                    <p class="font-light text-sm">#1121wq</p> <!--id pemain-->
+                    <p class="font-light text-sm"> <!--waktu-->
+                      <svg class="inline w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <polyline points="12 6 12 12 16 14"></polyline>
+                      </svg>
+                      12.00 AM
+                    </p>
+                  </div>
+                </div>
+              </div>
+              <div class="score self-center"> <!--curretn score-->
+                <h3 class="text-white text-4xl">100</h3>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
