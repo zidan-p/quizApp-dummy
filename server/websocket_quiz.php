@@ -21,7 +21,7 @@ class Chat implements MessageComponentInterface {
 		//varibale cliet di definisikan sebagai
 		//sebuah penyimpanan tertentu
 
-		echo "server run in port `3000` ...";
+		echo "server run in port `3000` ...\n";
 	}
 
 	public function onOpen(ConnectionInterface $conn){
@@ -43,8 +43,11 @@ class Chat implements MessageComponentInterface {
 
 		$from_id = $from->resourceId;
 		$data = json_decode($data);
-		var_dump($data->expect);
 		$type = $data->type;
+		
+		var_dump($data->type);
+		var_dump($data->expect);
+		echo "client size before :: ".sizeof($this->clientsData)."\n";
 		switch ($type) {
 
 			//untuk admin
@@ -61,6 +64,7 @@ class Chat implements MessageComponentInterface {
 			//menamabahkan player client sebuat id dan set local storage
 			case "add_current_player":
 				$id = generateRandomString(10); //dapatkan randow string untuk
+				var_dump($data);
 				$from->send(
 					json_encode([
 						"type" => "get_id",
@@ -80,18 +84,23 @@ class Chat implements MessageComponentInterface {
 				//bila tidak maka tidak perlu di push ulang
 				$user_id = array_column($this->clientsData, "id");
 				$found_key = array_search($data->user_data->id, $user_id); 
-
-				if(!$found_key){
-					array_push($this->clientsData, $data->user_data);
-				}
+				// var_dump($found_key);
+				echo  "found key :: ".$found_key."\n" ;
 				
+				if(!$found_key && !($found_key === 0)){ //saya tidak tahu cara menghandle apabila keynya adalah 0
+					array_push($this->clientsData, $data->user_data);
+					// $this->clientsData[sizeof($this->clientsData)] = $data->user_data;
+					echo "array telah ditambahkan \n";
+				}
+				// var_dump(sizeof($this->clientsData));
+				echo "client size sudah menjadi :: ".sizeof($this->clientsData);
 
 
 				//kirim ke pengirim
 				$from->send(
 					json_encode([
 						"type" => "update",
-						"get_data" => $this->clientsData[$found_key],
+						"get_data" => $this->clientsData[$found_key ?? sizeof($this->clientsData) - 1],
 						"refresh_data" => $this->clientsData
 					])
 				);
@@ -156,6 +165,8 @@ class Chat implements MessageComponentInterface {
 			case "get_all_player":
 				break;
 		}
+
+		echo "client size after :: ".sizeof($this->clientsData)."\n";
 	}
 
 	public function onError(ConnectionInterface $conn, \Exception $e) {
@@ -176,5 +187,16 @@ function generateRandomString($length = 10) {
     }
     return $randomString;
 }
+
+
+## catatan 1 ##
+/*
+pada php terdapat nilai yang besifat false, sehingga harus berhati2 dalam melakukan operator perbandingan.
+disini saya sudah merasakanya, yaitu ketika membuat perbandingan apabila element array ada atau tidak.
+bila ada maka skip, bila tidak maka tambah. hal membuat saya tersita waktunya untuk mendebugging hal ini.
+jadi untuk kedepanya project ini lebih diperhatikan nila yang bersifat falsynya.
+
+*/
+
 
 ?>

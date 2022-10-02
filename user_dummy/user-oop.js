@@ -104,26 +104,25 @@ class Lobby{
         //         player.setVisibility(false, i * 10);
         //     })
         // }
+        console.log("banyak player : " + refreshPlayerList.length)
         this.playerContainer.innerHTML = "";
         this.playerList = [];
         let param;
-        setTimeout(()=>{
-            refreshPlayerList.forEach((player,i) => {
-                param = {
-                    username:  player.username, 
-                    id : player.id,
-                    timeStamp : player.time_stamp,
-                    barPercent : player.bar_percent,
-                    score : player.score
-                }
-                this.playerList[i] = new Player(param);
-                console.log(this.playerList[i])
-                this.playerContainer.append(this.playerList[i].getNode());
-                this.playerList[i].setElement();
-                this.playerList[i].setVisibility(true, i * 10);
-        
-            });
-        },100)
+        refreshPlayerList.forEach((player,i) => {
+            param = {
+                username:  player.username, 
+                id : player.id,
+                timeStamp : player.timeStamp,
+                barPercent : player.barPercent,
+                score : player.score
+            }
+            this.playerList[i] = new Player(param);
+            console.log(this.playerList[i])
+            this.playerContainer.append(this.playerList[i].getNode());
+            this.playerList[i].setElement();
+            this.playerList[i].setVisibility(true, i * 10);
+    
+        });
     }
 
     setVisibility(is){
@@ -244,7 +243,7 @@ class Main{
         
     }
 
-    async start(){
+    start(){
         //cek apakah user ini sudah memiliki cookie / local storage ?
         this.currentPlayer = localStorage.getItem('userData');
         if(!this.currentPlayer){
@@ -253,7 +252,7 @@ class Main{
         }
         this.handleSocket();
         this.handleUpdateCurrentPlayer({
-            time_stamp : new Date().toJSON().replace("T",",").replace('Z',"")
+            timeStamp : new Date().toJSON().replace("T",",").replace('Z',"")
         })
         this.lobby.start();
     }
@@ -302,6 +301,8 @@ class Main{
 
     handleSocket(){
         let currentPlayer = JSON.parse(localStorage.getItem('userData'));
+        console.log("mecoba untuk socket");
+        console.log(currentPlayer);
         this.socketGame.send(
             JSON.stringify({
                 type : "socket",

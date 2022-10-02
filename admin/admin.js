@@ -469,8 +469,8 @@ class Main{
                 param = {
                     username:  player.username, 
                     id : player.id,
-                    timeStamp : player.time_stamp,
-                    barPercent : player.bar_percent,
+                    timeStamp : player.timeStamp,
+                    barPercent : player.barPercent,
                     score : player.score
                 }
                 this.playerList[i] = new Player(param);
