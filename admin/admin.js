@@ -35,10 +35,13 @@ class Lobby{
      * @param {WebSocket} socket
      */
     addEvent(startGame, config, socket){
+        console.log("menambahkan event untuk lobby")
         this.startBtn.addEventListener('click', (e)=> {
+            console.log("game seharusnya telah dimualai")
             this.setVisibility(false);
             setTimeout(()=>{
-                startGame.setVisibility(true);
+                console.log("game telah dimulai")
+                startGame.start();
             },150)
 
             socket.send(
@@ -114,17 +117,19 @@ class Question{
     // ** DOM container  **
     currentQuestionContainer;
     stringQuestionContainer;
-    aswerOptionsContainer; //html collection
+    answerOptionsContainer; //html collection
 
     // ** value data **
     question;
     answerOptions = [];
     trueAnswer;
 
+
     constructor(){
         this.currentQuestionContainer = document.querySelector('#current-question-container');
         this.stringQuestionContainer = document.querySelector('#question');
-        this.asnwerOptionsContainer = document.querySelector('.answer-option'); // ini htmlcollection
+        this.answerOptionsContainer = document.querySelectorAll('.answer-option'); // ini htmlcollection
+
     }
 
     setVisibility(is){
@@ -144,6 +149,27 @@ class Question{
         },150);
     }
 
+    insertQuestionAndAnswer(){
+        this.stringQuestionContainer.innerHTML = this.question;
+        this.answerOptionsContainer.forEach((answerContainer, i) => {
+            answerContainer.classList.remove("bg-green-200","bg-red-200");
+            if( i == this.trueAnswer){
+                answerContainer.classList.add("bg-green-200");
+            }else{
+                answerContainer.classList.add("bg-red-200");
+            }
+            answerContainer.innerHTML = this.answerOptions[i]
+        })
+    }
+
+    refreshQuestion({question  = "pertanyaan dummy", answerOptions = [], trueAnswer = 0}){
+        this.question = question;
+        this.answerOptions = answerOptions;
+        this.trueAnswer = trueAnswer;
+
+        this.insertQuestionAndAnswer();
+    }
+
 }
 
 class StartGame{
@@ -156,6 +182,8 @@ class StartGame{
     // ** value container **
     question // object question
     mainGame // object seluruh game
+    questionList // array question dari fetch
+    questionCounter // nomor pertanyaan saat ini (index)
 
     constructor(){
         this.gameMenuContainer = document.querySelector('#game-menu');
@@ -164,6 +192,11 @@ class StartGame{
         this.gameMenuContainer = document.querySelector('#game-menu');
 
         this.question = new Question();
+    }
+
+    start(){
+        this.setVisibility(true);
+        this.fetchQuestion();
     }
 
     setVisibility(is){
@@ -218,6 +251,37 @@ class StartGame{
      */
     attach(mainGame){
         this.mainGame = mainGame;
+    }
+
+    async fetchQuestion(){
+        // this.questionList = await fetch(this.mainGame.questionURL);
+        // this.questionCounter = 0;
+
+        // this.setQuestion(0)
+
+        fetch(this.mainGame.questionURL)
+        .then(res => res.json())
+        .then(res => {
+            console.log(res);
+            this.questionList = res
+            this.questionCounter = 0;
+            this.setQuestion(0);
+        })
+    }
+
+    setQuestion(set){
+        let questionL = this.questionList[set];
+        console.log(questionL)
+        this.question.refreshQuestion({
+            question  : questionL.question, 
+            answerOptions : [
+                questionL.choice1,
+                questionL.choice2,
+                questionL.choice3,
+                questionL.choice4,
+            ], 
+            trueAnswer : questionL.answer -1
+        })
     }
 
 }
@@ -321,12 +385,17 @@ class Main{
     sockect;
     playerList = []; //object player
     playerListDOM = []; //player dalam bentuk html
-    question; //question
+    questionURL; //question
+
+
+
+
 
     constructor(){
         this.lobby = new Lobby();
         this.config = new Config();
         this.startGame = new StartGame();
+        this.questionURL = "https://raw.githubusercontent.com/Zwarzen/questions/main/questions.json"
 
         // ** read DOM **
         this.header = document.querySelector('#header');
@@ -339,6 +408,7 @@ class Main{
     start(){
         // ** listener masing2 components **
         this.lobby.addEvent(this.startGame, this.config, this.sockect);
+        console.log("seharusnya event looby sudah ditambahkan")
         this.config.addEvent(this.lobby)
         
         // attach main object
@@ -347,8 +417,6 @@ class Main{
         // secara default semua components dibuat hidden
         // this.lobby.setVisibility(true);
         this.lobby.setVisibility(true);
-
-
 
     }
 
@@ -417,6 +485,11 @@ class Main{
     handleErrorSocket(){
         this.errorSocket.classList.remove('hidden')
     }
+
+    fetchQuestion(url){
+
+    }
+
     handleUpdateQuestion(){}
 
     setStartGame(){}
