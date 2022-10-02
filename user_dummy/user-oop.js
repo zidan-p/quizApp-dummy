@@ -282,9 +282,9 @@ class Main{
                     this.lobby.updadatePlayerList(sendData.refresh_data);
                     break;
 
-                case "game_start":
+                case "start_game":
                     // isi disini
-                    // window.location = ""
+                    window.location = "in-game-quiz.html"
                     break;
 
                 case "get_id" :
@@ -353,9 +353,9 @@ class Main{
 
 
 
-// const gameSocket = new WebSocket('ws://localhost:3000/');
-// const game = new Main(gameSocket);
-// game.receiveMessage()
+const gameSocket = new WebSocket('ws://localhost:3000/');
+const game = new Main(gameSocket);
+game.receiveMessage()
 
 
 

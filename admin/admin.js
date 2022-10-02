@@ -43,7 +43,8 @@ class Lobby{
 
             socket.send(
                 JSON.stringify({
-                    type : "game_start"
+                    type : "start_game",
+                    expect : "start the game | make all player start the game"
                 })
             )
         })
@@ -337,7 +338,7 @@ class Main{
     // ** disini tempat logika utama dibuat **
     start(){
         // ** listener masing2 components **
-        this.lobby.addEvent(this.startGame, this.config);
+        this.lobby.addEvent(this.startGame, this.config, this.sockect);
         this.config.addEvent(this.lobby)
         
         // attach main object
